@@ -1,0 +1,1033 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b13">
+<title>Kishore Kumar | The Golden Voice</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root{
+ --bg:#080b13;
+ --gold:#e9bd70;
+ --text:#fff4df;
+ --glass:rgba(255,255,255,.075);
+ --line:rgba(255,255,255,.16);
+}
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ color:var(--text);
+ font-family:Poppins,Arial,sans-serif;
+ background:
+ radial-gradient(circle at 15% 10%,#49304d,transparent 35%),
+ radial-gradient(circle at 85% 45%,#16404a,transparent 35%),
+ var(--bg);
+ min-height:100vh;
+}
+
+button,input{font:inherit}
+button{cursor:pointer}
+
+header{
+ position:sticky;
+ top:0;
+ z-index:10;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:15px 5%;
+ background:rgba(8,11,19,.75);
+ backdrop-filter:blur(22px);
+ border-bottom:1px solid var(--line);
+}
+
+.brand{
+ color:var(--gold);
+ font-weight:800;
+ letter-spacing:2px;
+}
+
+.btn{
+ border:1px solid rgba(255,255,255,.25);
+ background:linear-gradient(135deg,#f6d89e,#bd8039);
+ color:#201508;
+ padding:11px 19px;
+ border-radius:30px;
+ font-weight:700;
+ box-shadow:0 8px 25px #d9a64b30;
+ transition:.25s;
+}
+
+.btn:hover{transform:translateY(-3px)}
+
+.hero{
+ min-height:430px;
+ display:grid;
+ place-items:center;
+ text-align:center;
+ padding:80px 15px;
+ position:relative;
+ overflow:hidden;
+}
+
+.hero:before,.hero:after{
+ content:"";
+ position:absolute;
+ width:340px;
+ height:340px;
+ border:1px solid #e9bd7040;
+ border-radius:50%;
+ box-shadow:0 0 90px #e9bd7020,inset 0 0 60px #e9bd7015;
+ animation:float 7s infinite ease-in-out;
+}
+
+.hero:after{
+ width:470px;
+ height:470px;
+ animation-delay:-3s;
+}
+
+@keyframes float{
+ 50%{transform:translateY(-20px) rotate(8deg)}
+}
+
+.hero-content{position:relative;z-index:1}
+
+.hero small{
+ letter-spacing:5px;
+ color:var(--gold);
+}
+
+h1{
+ font:800 clamp(40px,9vw,90px) 'Playfair Display',serif;
+ margin:20px 0 10px;
+ text-shadow:0 10px 40px #e9bd7040;
+}
+
+.hero h2{
+ color:var(--gold);
+ letter-spacing:7px;
+ font-size:17px;
+}
+
+.hero p{
+ color:#c9c4ba;
+ line-height:1.9;
+}
+
+.container{
+ width:min(1100px,92%);
+ margin:auto;
+}
+
+.heading{
+ color:var(--gold);
+ font:700 30px 'Playfair Display',serif;
+ margin:30px 0 18px;
+}
+
+.glass{
+ background:var(--glass);
+ border:1px solid var(--line);
+ border-radius:25px;
+ backdrop-filter:blur(22px);
+ -webkit-backdrop-filter:blur(22px);
+ box-shadow:
+ 0 20px 55px #0005,
+ inset 0 1px 1px #ffffff20;
+}
+
+.search{
+ width:100%;
+ padding:15px 20px;
+ border-radius:30px;
+ border:1px solid var(--line);
+ background:#ffffff0c;
+ color:white;
+ outline:none;
+ margin-bottom:18px;
+}
+
+.layout{
+ display:grid;
+ grid-template-columns:1.2fr .8fr;
+ gap:20px;
+}
+
+.panel{padding:22px;min-width:0}
+
+.song{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:14px 5px;
+ border-bottom:1px solid #ffffff18;
+}
+
+.song-info{flex:1;min-width:0}
+.song-info strong{display:block;overflow-wrap:anywhere}
+.song-info small{color:#bbb}
+
+.play-btn{
+ border:0;
+ background:linear-gradient(135deg,#f5d89d,#bd8039);
+ color:#201508;
+ border-radius:50%;
+ width:42px;
+ height:42px;
+ font-weight:bold;
+}
+
+.player{text-align:center}
+
+.vinyl{
+ width:175px;
+ height:175px;
+ margin:12px auto 25px;
+ border-radius:50%;
+ border:8px solid #514535;
+ background:repeating-radial-gradient(circle,#111 0 5px,#333 6px 8px);
+ display:grid;
+ place-items:center;
+ box-shadow:0 15px 40px #0009;
+}
+
+.vinyl:after{
+ content:"KK";
+ width:48px;
+ height:48px;
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ background:linear-gradient(135deg,#f5d99e,#a96b2e);
+ color:#201508;
+ font-weight:900;
+ border:4px solid #57432b;
+}
+
+.spin{animation:rotate 4s linear infinite}
+@keyframes rotate{to{transform:rotate(360deg)}}
+
+.player h3{color:var(--gold)}
+.player p{color:#bbb}
+
+input[type=range]{
+ width:100%;
+ accent-color:var(--gold);
+}
+
+.time{
+ display:flex;
+ justify-content:space-between;
+ color:#aaa;
+ font-size:11px;
+}
+
+.controls{
+ display:flex;
+ justify-content:center;
+ gap:15px;
+ margin:20px;
+}
+
+.control{
+ width:48px;
+ height:48px;
+ border:0;
+ border-radius:50%;
+ background:linear-gradient(135deg,#f5d89d,#bd8039);
+ color:#201508;
+ font-size:18px;
+}
+
+.donation,.request{
+ margin:30px 0;
+ padding:30px;
+ text-align:center;
+}
+
+.donation h2,.request h2{
+ color:var(--gold);
+ font:700 27px 'Playfair Display',serif;
+}
+
+.donation p,.request p{
+ color:#d0c7b8;
+ line-height:1.9;
+}
+
+.emotional{
+ color:#f5d9a7!important;
+ font:italic 600 17px 'Playfair Display',serif;
+}
+
+.qr img{
+ width:210px;
+ max-width:75%;
+ background:white;
+ padding:9px;
+ border-radius:15px;
+}
+
+.request a,footer a{
+ color:var(--gold);
+ text-decoration:none;
+}
+
+footer{
+ text-align:center;
+ padding:35px 15px;
+ color:#aaa;
+ font-size:12px;
+ line-height:2;
+}
+
+footer strong{color:var(--gold)}
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ z-index:30;
+ background:#000c;
+ backdrop-filter:blur(12px);
+ justify-content:center;
+ align-items:center;
+ padding:15px;
+}
+
+.modal.show{display:flex}
+
+.dialog{
+ width:100%;
+ max-width:560px;
+ max-height:92vh;
+ overflow:auto;
+ padding:23px;
+ border-radius:25px;
+ background:#151b29f5;
+ border:1px solid var(--line);
+ box-shadow:0 20px 80px #000a;
+}
+
+.dialog h2,.dialog h3{color:var(--gold)}
+
+.field{margin:13px 0}
+
+.field label{
+ display:block;
+ color:#bbb;
+ font-size:12px;
+ margin-bottom:7px;
+}
+
+.field input{
+ width:100%;
+ padding:12px;
+ background:#ffffff0c;
+ color:white;
+ border:1px solid var(--line);
+ border-radius:10px;
+ outline:none;
+}
+
+.field input[type=color]{height:45px;padding:4px}
+
+.admin-song{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ padding:10px 0;
+ border-bottom:1px solid var(--line);
+}
+
+.small{
+ color:#aaa;
+ font-size:11px;
+ line-height:1.7;
+}
+
+.status{
+ color:var(--gold);
+ font-size:12px;
+}
+
+.admin-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+}
+
+hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+
+@media(max-width:700px){
+ .layout{grid-template-columns:1fr}
+ .player{grid-row:1}
+ .hero{min-height:370px}
+ .admin-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="brand" id="brand">♫ KISHORE KUMAR</div>
+ <button class="btn" onclick="openLogin()">🔐 ADMIN LOGIN</button>
+</header>
+
+<section class="hero">
+ <div class="hero-content">
+  <small id="eyebrow">A TRIBUTE TO A LEGEND</small>
+  <h1 id="heroTitle">KISHORE KUMAR</h1>
+  <h2 id="heroSubtitle">THE GOLDEN VOICE</h2>
+  <p id="heroText">Some voices never fade.<br>They live forever in our hearts.</p>
+ </div>
+</section>
+
+<main class="container">
+
+ <h2 class="heading" id="playlistHeading">The Melody Collection</h2>
+
+ <input class="search" id="search"
+ placeholder="Search your favourite songs...">
+
+ <div class="layout">
+
+  <section class="glass panel">
+   <div id="playlist">
+    <p class="small">No songs added yet. Admin can upload MP3 songs.</p>
+   </div>
+  </section>
+
+  <section class="glass panel player">
+   <div class="vinyl" id="vinyl"></div>
+
+   <h3 id="songTitle">Select a Melody</h3>
+   <p id="songArtist">Kishore Kumar Collection</p>
+
+   <audio id="audio"></audio>
+
+   <input type="range" id="progress" value="0" min="0" max="100">
+
+   <div class="time">
+    <span id="current">0:00</span>
+    <span id="duration">0:00</span>
+   </div>
+
+   <div class="controls">
+    <button class="control" onclick="previousSong()">⏮</button>
+    <button class="control" onclick="togglePlay()" id="playButton">▶</button>
+    <button class="control" onclick="nextSong()">⏭</button>
+   </div>
+
+   <small class="small">Enjoy the golden melodies</small>
+  </section>
+
+ </div>
+
+ <section class="glass donation">
+  <h2 id="donationTitle">A Small Support, A Big Feeling ❤️</h2>
+
+  <p class="emotional" id="donationText">
+   Kishore Da ki awaaz sirf gaane nahi,
+   balki yaadon ka ek khoobsurat ehsaas hai.
+   Agar aapko bhi unke geeton se pyaar hai,
+   toh apna chhota sa support zaroor dein. ❤️
+  </p>
+
+  <div class="qr" id="qr">
+   <p>PhonePe QR Code</p>
+   <small class="small">Admin can upload QR image</small>
+  </div>
+ </section>
+
+ <section class="glass request">
+  <h2 id="requestTitle">Request Your Favourite Song</h2>
+  <p id="requestText">Apna favourite Kishore Da song humein email karein.</p>
+  <a id="emailLink" href="mailto:mayankchahar108@gmail.com">
+   mayankchahar108@gmail.com
+  </a>
+ </section>
+
+</main>
+
+<footer>
+ <div id="footerText">MADE WITH LOVE FOR KISHORE DA<br>KISHORE KUMAR • THE GOLDEN VOICE</div>
+ <div>Made with ❤️ by <strong id="creator">MAYANK CHAHAR</strong></div>
+ <div>Instagram:
+  <a id="instagram" href="https://www.instagram.com/mayank__chahar/" target="_blank">@mayank__chahar</a>
+ </div>
+</footer>
+
+<!-- LOGIN -->
+<div class="modal" id="loginModal">
+ <div class="dialog">
+  <h2>Admin Login</h2>
+  <p class="small">Enter your password to continue.</p>
+  <div class="field">
+   <label>ADMIN PASSWORD</label>
+   <input type="password" id="password" placeholder="Enter password">
+  </div>
+  <button class="btn" onclick="login()">LOGIN</button>
+  <button class="btn" onclick="closeModal('loginModal')">CANCEL</button>
+  <p class="status" id="error"></p>
+ </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="modal" id="adminModal">
+ <div class="dialog">
+
+  <h2>Admin Studio</h2>
+  <p class="small">Manage and customize your complete website.</p>
+
+  <h3>Upload New Song</h3>
+
+  <div class="field">
+   <label>SONG TITLE</label>
+   <input id="title" placeholder="Song name">
+  </div>
+
+  <div class="field">
+   <label>SINGER</label>
+   <input id="artist" placeholder="Kishore Kumar">
+  </div>
+
+  <div class="field">
+   <label>MP3 FILE</label>
+   <input type="file" id="mp3" accept="audio/*">
+  </div>
+
+  <button class="btn" onclick="addSong()">ADD SONG</button>
+
+  <div id="adminSongs"></div>
+
+  <hr>
+
+  <h3>PhonePe QR Code</h3>
+  <div class="field">
+   <input type="file" id="qrFile" accept="image/*">
+  </div>
+
+  <button class="btn" onclick="uploadQR()">UPLOAD QR</button>
+  <button class="btn" onclick="removeQR()">REMOVE QR</button>
+
+  <hr>
+
+  <h3>Website Content Customization</h3>
+
+  <div class="field"><label>WEBSITE NAME</label><input id="cBrand"></div>
+  <div class="field"><label>HERO SMALL HEADING</label><input id="cEyebrow"></div>
+  <div class="field"><label>MAIN TITLE</label><input id="cHeroTitle"></div>
+  <div class="field"><label>SUBTITLE</label><input id="cHeroSubtitle"></div>
+  <div class="field"><label>HERO DESCRIPTION</label><input id="cHeroText"></div>
+  <div class="field"><label>PLAYLIST HEADING</label><input id="cPlaylist"></div>
+  <div class="field"><label>DONATION HEADING</label><input id="cDonationTitle"></div>
+  <div class="field"><label>EMOTIONAL QR MESSAGE</label><input id="cDonationText"></div>
+  <div class="field"><label>REQUEST HEADING</label><input id="cRequestTitle"></div>
+  <div class="field"><label>REQUEST MESSAGE</label><input id="cRequestText"></div>
+  <div class="field"><label>EMAIL ADDRESS</label><input id="cEmail"></div>
+  <div class="field"><label>FOOTER TEXT</label><input id="cFooter"></div>
+  <div class="field"><label>CREATOR NAME</label><input id="cCreator"></div>
+  <div class="field"><label>INSTAGRAM USERNAME</label><input id="cInstagram"></div>
+
+  <h3>3D Liquid Theme Colors</h3>
+
+  <div class="admin-grid">
+   <div class="field"><label>BACKGROUND</label><input type="color" id="cBg"></div>
+   <div class="field"><label>GOLD COLOR</label><input type="color" id="cGold"></div>
+   <div class="field"><label>TEXT COLOR</label><input type="color" id="cText"></div>
+  </div>
+
+  <button class="btn" onclick="saveCustomization()">SAVE CUSTOMIZATION</button>
+  <button class="btn" onclick="resetCustomization()">RESET DEFAULTS</button>
+
+  <hr>
+
+  <h3>Change Admin Password</h3>
+
+  <div class="field">
+   <label>CURRENT PASSWORD</label>
+   <input type="password" id="oldPass">
+  </div>
+
+  <div class="field">
+   <label>NEW PASSWORD</label>
+   <input type="password" id="newPass">
+  </div>
+
+  <div class="field">
+   <label>CONFIRM NEW PASSWORD</label>
+   <input type="password" id="confirmPass">
+  </div>
+
+  <button class="btn" onclick="changePassword()">UPDATE PASSWORD</button>
+
+  <p class="status" id="adminStatus"></p>
+
+  <p class="small">
+   Data is stored in this browser on this device.
+   For a public website, server-side authentication and database are needed.
+  </p>
+
+  <button class="btn" onclick="closeModal('adminModal')">LOGOUT</button>
+
+ </div>
+</div>
+
+<script>
+const DEFAULT_PASSWORD="552474034277@kishor";
+
+const defaults={
+ brand:"♫ KISHORE KUMAR",
+ eyebrow:"A TRIBUTE TO A LEGEND",
+ heroTitle:"KISHORE KUMAR",
+ heroSubtitle:"THE GOLDEN VOICE",
+ heroText:"Some voices never fade.|They live forever in our hearts.",
+ playlist:"The Melody Collection",
+ donationTitle:"A Small Support, A Big Feeling ❤️",
+ donationText:"Kishore Da ki awaaz sirf gaane nahi, balki yaadon ka ek khoobsurat ehsaas hai. Agar aapko bhi unke geeton se pyaar hai, toh apna chhota sa support zaroor dein. ❤️",
+ requestTitle:"Request Your Favourite Song",
+ requestText:"Apna favourite Kishore Da song humein email karein.",
+ email:"mayankchahar108@gmail.com",
+ footer:"MADE WITH LOVE FOR KISHORE DA | KISHORE KUMAR • THE GOLDEN VOICE",
+ creator:"MAYANK CHAHAR",
+ instagram:"mayank__chahar",
+ bg:"#080b13",
+ gold:"#e9bd70",
+ text:"#fff4df"
+};
+
+let db;
+let songs=[];
+let current=-1;
+let playingURL=null;
+let qrURL=null;
+
+const audio=document.getElementById("audio");
+
+function openDB(){
+ return new Promise((resolve,reject)=>{
+  let r=indexedDB.open("KishoreTributeDB",1);
+
+  r.onupgradeneeded=()=>{
+   let d=r.result;
+
+   if(!d.objectStoreNames.contains("songs"))
+    d.createObjectStore("songs",{keyPath:"id",autoIncrement:true});
+
+   if(!d.objectStoreNames.contains("settings"))
+    d.createObjectStore("settings",{keyPath:"key"});
+  };
+
+  r.onsuccess=()=>resolve(r.result);
+  r.onerror=()=>reject(r.error);
+ });
+}
+
+function store(name,mode,fn){
+ return new Promise((resolve,reject)=>{
+  let tx=db.transaction(name,mode);
+  let req=fn(tx.objectStore(name));
+  req.onsuccess=()=>resolve(req.result);
+  req.onerror=()=>reject(req.error);
+ });
+}
+
+async function getSetting(key){
+ return store("settings","readonly",s=>s.get(key));
+}
+
+async function setSetting(key,value){
+ return store("settings","readwrite",s=>s.put({key,value}));
+}
+
+function closeModal(id){
+ document.getElementById(id).classList.remove("show");
+}
+
+function openLogin(){
+ document.getElementById("password").value="";
+ document.getElementById("error").textContent="";
+ document.getElementById("loginModal").classList.add("show");
+}
+
+async function getPassword(){
+ let p=await getSetting("adminPassword");
+ return p?.value || DEFAULT_PASSWORD;
+}
+
+async function login(){
+ let entered=document.getElementById("password").value;
+
+ if(entered===await getPassword()){
+  closeModal("loginModal");
+  document.getElementById("adminModal").classList.add("show");
+  await fillCustomization();
+  document.getElementById("adminStatus").textContent="";
+ }else{
+  document.getElementById("error").textContent="Incorrect password!";
+ }
+}
+
+async function changePassword(){
+ let old=document.getElementById("oldPass").value;
+ let n=document.getElementById("newPass").value;
+ let c=document.getElementById("confirmPass").value;
+
+ if(old!==await getPassword()){
+  adminMessage("Current password is incorrect.");
+  return;
+ }
+
+ if(n.length<8){
+  adminMessage("New password must be at least 8 characters.");
+  return;
+ }
+
+ if(n!==c){
+  adminMessage("Passwords do not match.");
+  return;
+ }
+
+ await setSetting("adminPassword",n);
+
+ document.getElementById("oldPass").value="";
+ document.getElementById("newPass").value="";
+ document.getElementById("confirmPass").value="";
+
+ adminMessage("Admin password changed successfully!");
+}
+
+function adminMessage(t){
+ document.getElementById("adminStatus").textContent=t;
+}
+
+function safe(v){
+ return String(v??"").replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+async function loadSongs(){
+ songs=await store("songs","readonly",s=>s.getAll());
+ render();
+}
+
+function render(){
+ let q=document.getElementById("search").value.toLowerCase();
+
+ let filtered=songs.filter(s=>
+  (s.title+" "+s.artist).toLowerCase().includes(q)
+ );
+
+ document.getElementById("playlist").innerHTML=
+ filtered.length ? filtered.map(s=>{
+  let i=songs.findIndex(x=>x.id===s.id);
+
+  return `
+   <div class="song">
+    <div class="song-info">
+     <strong>${safe(s.title)}</strong>
+     <small>${safe(s.artist)}</small>
+    </div>
+    <button class="play-btn" onclick="playSong(${i})">▶</button>
+   </div>`;
+ }).join("") :
+ '<p class="small">No songs found.</p>';
+
+ document.getElementById("adminSongs").innerHTML=
+ songs.map(s=>`
+  <div class="admin-song">
+   <span>${safe(s.title)}</span>
+   <button class="btn" onclick="deleteSong(${s.id})">DELETE</button>
+  </div>
+ `).join("") || '<p class="small">No songs added.</p>';
+}
+
+async function addSong(){
+ let title=document.getElementById("title").value.trim();
+ let artist=document.getElementById("artist").value.trim()||"Kishore Kumar";
+ let file=document.getElementById("mp3").files[0];
+
+ if(!title||!file){
+  alert("Enter song title and choose an audio file.");
+  return;
+ }
+
+ if(file.size>35*1024*1024){
+  alert("File must be smaller than 35 MB.");
+  return;
+ }
+
+ try{
+  await store("songs","readwrite",s=>s.add({
+   title,artist,blob:file
+  }));
+
+  document.getElementById("title").value="";
+  document.getElementById("artist").value="";
+  document.getElementById("mp3").value="";
+
+  await loadSongs();
+  adminMessage("Song added successfully!");
+ }catch(e){
+  adminMessage("Storage full or file could not be saved.");
+ }
+}
+
+async function deleteSong(id){
+ if(!confirm("Delete this song?"))return;
+
+ let i=songs.findIndex(s=>s.id===id);
+
+ if(i===current){
+  audio.pause();
+  audio.removeAttribute("src");
+  current=-1;
+
+  if(playingURL)URL.revokeObjectURL(playingURL);
+  playingURL=null;
+
+  document.getElementById("songTitle").textContent="Select a Melody";
+ }
+
+ await store("songs","readwrite",s=>s.delete(id));
+ await loadSongs();
+}
+
+async function playSong(i){
+ if(i<0||i>=songs.length)return;
+
+ current=i;
+
+ if(playingURL)URL.revokeObjectURL(playingURL);
+
+ playingURL=URL.createObjectURL(songs[i].blob);
+ audio.src=playingURL;
+
+ document.getElementById("songTitle").textContent=songs[i].title;
+ document.getElementById("songArtist").textContent=songs[i].artist;
+
+ try{await audio.play()}catch(e){}
+}
+
+function togglePlay(){
+ if(current===-1){
+  if(songs.length)playSong(0);
+ }else if(audio.paused){
+  audio.play();
+ }else{
+  audio.pause();
+ }
+}
+
+function nextSong(){
+ if(songs.length)playSong((current+1)%songs.length);
+}
+
+function previousSong(){
+ if(songs.length)playSong((current-1+songs.length)%songs.length);
+}
+
+function formatTime(t){
+ return Math.floor(t/60)+":"+
+ String(Math.floor(t%60)).padStart(2,"0");
+}
+
+audio.addEventListener("play",()=>{
+ document.getElementById("playButton").textContent="Ⅱ";
+ document.getElementById("vinyl").classList.add("spin");
+});
+
+audio.addEventListener("pause",()=>{
+ document.getElementById("playButton").textContent="▶";
+ document.getElementById("vinyl").classList.remove("spin");
+});
+
+audio.addEventListener("timeupdate",()=>{
+ if(audio.duration){
+  document.getElementById("progress").value=
+   audio.currentTime/audio.duration*100;
+
+  document.getElementById("current").textContent=formatTime(audio.currentTime);
+  document.getElementById("duration").textContent=formatTime(audio.duration);
+ }
+});
+
+audio.addEventListener("ended",nextSong);
+
+document.getElementById("progress").addEventListener("input",e=>{
+ if(audio.duration)audio.currentTime=e.target.value/100*audio.duration;
+});
+
+document.getElementById("search").addEventListener("input",render);
+
+async function uploadQR(){
+ let file=document.getElementById("qrFile").files[0];
+
+ if(!file||!file.type.startsWith("image/")){
+  alert("Choose a QR image.");
+  return;
+ }
+
+ await setSetting("qr",file);
+ document.getElementById("qrFile").value="";
+ await showQR();
+ adminMessage("QR uploaded successfully!");
+}
+
+async function removeQR(){
+ await store("settings","readwrite",s=>s.delete("qr"));
+ await showQR();
+ adminMessage("QR removed.");
+}
+
+async function showQR(){
+ let data=await getSetting("qr");
+ let box=document.getElementById("qr");
+
+ if(qrURL)URL.revokeObjectURL(qrURL);
+
+ if(data?.value){
+  qrURL=URL.createObjectURL(data.value);
+
+  box.innerHTML=`
+   <img src="${qrURL}" alt="PhonePe QR Code">
+   <p class="small">Scan to support this tribute</p>`;
+ }else{
+  box.innerHTML='<p>PhonePe QR Code</p><small class="small">Admin can upload QR image</small>';
+ }
+}
+
+function applyCustomization(c){
+ let v={...defaults,...c};
+
+ document.title=v.heroTitle+" | "+v.heroSubtitle;
+
+ document.getElementById("brand").textContent=v.brand;
+ document.getElementById("eyebrow").textContent=v.eyebrow;
+ document.getElementById("heroTitle").textContent=v.heroTitle;
+ document.getElementById("heroSubtitle").textContent=v.heroSubtitle;
+ document.getElementById("heroText").textContent=v.heroText.replace(/\|/g,"\n");
+ document.getElementById("heroText").style.whiteSpace="pre-line";
+
+ document.getElementById("playlistHeading").textContent=v.playlist;
+ document.getElementById("donationTitle").textContent=v.donationTitle;
+ document.getElementById("donationText").textContent=v.donationText;
+ document.getElementById("requestTitle").textContent=v.requestTitle;
+ document.getElementById("requestText").textContent=v.requestText;
+
+ document.getElementById("emailLink").textContent=v.email;
+ document.getElementById("emailLink").href="mailto:"+v.email;
+
+ document.getElementById("footerText").textContent=v.footer.replace(/\|/g," • ");
+ document.getElementById("creator").textContent=v.creator;
+
+ let ig=v.instagram.replace(/^@/,"");
+ let link=document.getElementById("instagram");
+ link.textContent="@"+ig;
+ link.href="https://instagram.com/"+encodeURIComponent(ig)+"/";
+
+ document.documentElement.style.setProperty("--bg",v.bg);
+ document.documentElement.style.setProperty("--gold",v.gold);
+ document.documentElement.style.setProperty("--text",v.text);
+
+ document.body.style.background=
+ `radial-gradient(circle at 15% 10%,${v.gold}35,transparent 35%),radial-gradient(circle at 85% 45%,#16404a,transparent 35%),${v.bg}`;
+}
+
+function getValue(id){
+ return document.getElementById(id).value;
+}
+
+async function saveCustomization(){
+ let c={
+  brand:getValue("cBrand"),
+  eyebrow:getValue("cEyebrow"),
+  heroTitle:getValue("cHeroTitle"),
+  heroSubtitle:getValue("cHeroSubtitle"),
+  heroText:getValue("cHeroText"),
+  playlist:getValue("cPlaylist"),
+  donationTitle:getValue("cDonationTitle"),
+  donationText:getValue("cDonationText"),
+  requestTitle:getValue("cRequestTitle"),
+  requestText:getValue("cRequestText"),
+  email:getValue("cEmail"),
+  footer:getValue("cFooter"),
+  creator:getValue("cCreator"),
+  instagram:getValue("cInstagram"),
+  bg:getValue("cBg"),
+  gold:getValue("cGold"),
+  text:getValue("cText")
+ };
+
+ await setSetting("customization",c);
+ applyCustomization(c);
+ adminMessage("Website customization saved!");
+}
+
+async function fillCustomization(){
+ let data=await getSetting("customization");
+ let c={...defaults,...(data?.value||{})};
+
+ let map={
+  cBrand:"brand",
+  cEyebrow:"eyebrow",
+  cHeroTitle:"heroTitle",
+  cHeroSubtitle:"heroSubtitle",
+  cHeroText:"heroText",
+  cPlaylist:"playlist",
+  cDonationTitle:"donationTitle",
+  cDonationText:"donationText",
+  cRequestTitle:"requestTitle",
+  cRequestText:"requestText",
+  cEmail:"email",
+  cFooter:"footer",
+  cCreator:"creator",
+  cInstagram:"instagram",
+  cBg:"bg",
+  cGold:"gold",
+  cText:"text"
+ };
+
+ Object.entries(map).forEach(([id,key])=>{
+  document.getElementById(id).value=c[key];
+ });
+}
+
+async function resetCustomization(){
+ if(!confirm("Reset website customization?"))return;
+
+ await store("settings","readwrite",s=>s.delete("customization"));
+ applyCustomization(defaults);
+ await fillCustomization();
+ adminMessage("Customization reset.");
+}
+
+(async()=>{
+ try{
+  db=await openDB();
+  await loadSongs();
+
+  let data=await getSetting("customization");
+  applyCustomization(data?.value||defaults);
+
+  await showQR();
+ }catch(e){
+  document.getElementById("playlist").textContent=
+   "Storage unavailable. Please open in Chrome.";
+ }
+})();
+</script>
+
+</body>
+</html>
